@@ -11,12 +11,17 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
-    <title>The Blog</title>
+    <title>The Django Blog</title>
 </head>
 <body>
+
     <div class="page-header">
-        <h1><a href="/">Django Girls Blog</a></h1>
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        {% endif %}
+        <h1><a href="/">The Django Blog</a></h1>
     </div>
+
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
@@ -25,6 +30,7 @@
             </div>
         </div>
     </div>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
